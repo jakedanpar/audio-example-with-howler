@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Simple example of audio with Howler</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"
+      integrity="sha512-L6Z/YtIPQ7eU3BProP34WGU5yIRk7tNHk7vaC2dB1Vy1atz6wl9mCkTPPZ2Rn1qPr+vY2mZ9odZLdGYuaBk7dQ=="
+      crossorigin="anonymous"
+    ></script>
+    <meta name="description" content="A simple exercise template." />
+    <!-- styles -->
+    <style>
+      .highlight {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Back in the City</h1>
+    <div>
+      <div id="poem-line-0">Hey girl! It's been years! When did you move back here?!</div>
+      <div id="poem-line-1">So much has changed I have to tell you everything. Clarice got a promotion and then a dmeotion and now she works at O'Flannery's. </div>
+      <div id="poem-line-2">You should come out tonight! Omg Lucrezio is hosting a tank top party, it's a must. A must!</div>
+    </div>
+    <button id="play-sounds">Play sounds</button>
+    <!-- script -->
+    <script>
+      const currentPoem = [
+        "https://cdn.glitch.com/50585ecc-42c5-42f3-bb2e-816c4428542b%2FParis%20Traffic.mp3?v=1620193836805",
+        "https://cdn.glitch.com/50585ecc-42c5-42f3-bb2e-816c4428542b%2FO'flannerys.mp3?v=1620194443113",
+        "https://cdn.glitch.com/50585ecc-42c5-42f3-bb2e-816c4428542b%2FTekkkkknooo.mp3?v=1620194298146"
+      ];
+      const button = document.getElementById("play-sounds");
+      function readPoem(lineIndex) {
+        let sound = new Howl({
+          src: [currentPoem[lineIndex]],
+          preload: true,
+          onend: function() {
+            if (lineIndex < currentPoem.length - 1) {
+              readPoem(lineIndex + 1);
+            }
+            document
+              .querySelector("#poem-line-" + lineIndex)
+              .classList.toggle("highlight");
+          }
+        });
+        document
+          .querySelector("#poem-line-" + lineIndex)
+          .classList.toggle("highlight");
+        sound.play();
+      }
+      button.addEventListener("click", function() {
+        readPoem(0);
+      });
+    </script>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
+
+ <!-- custom font -->
+    <link <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+  
+
+<!-- styles -->
+    <style>
+      body {
+        font-family: 'Zen Dots', cursive;
+        margin: 2em;
+        background-color: #FFF;
+        color: #blue;
+        font-size: 1em;
+      }
+      h1 {
+        color: #blue;
+      }
+    </style>
